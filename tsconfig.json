@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "lib": ["DOM", "ESNext"],
     "allowSyntheticDefaultImports": true,
     "strict": true,
@@ -13,6 +13,6 @@
     "noEmit": true,
     "types": ["vite/client"]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "vite.config.ts"],
   "exclude": ["dist", "node_modules"]
 }

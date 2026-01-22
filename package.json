@@ -22,8 +22,10 @@
   },
   "homepage": "https://github.com/arhakim/simple-tiptap-texteditor#readme",
   "author": {
-    "name": "AR Hakim",
-    "url": "https://ar-hakim.com"
+    "name": "arhakim",
+    "url": "https://ar-hakim.com",
+    "email": "work.harmonics494@passinbox.com",
+    "github": "https://github.com/arhakim"
   },
   "license": "MIT",
   "main": "dist/simple-tiptap-texteditor.umd.js",
@@ -35,9 +37,9 @@
   ],
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/simple-tiptap-texteditor.es.js",
-      "require": "./dist/simple-tiptap-texteditor.umd.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/simple-tiptap-texteditor.umd.js"
     }
   },
   "scripts": {
