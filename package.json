@@ -3,7 +3,28 @@
   "version": "0.1.0",
   "type": "module",
   "description": "A lightweight, preconfigured TipTap text editor Vue 3 component with sensible defaults and optional fullscreen/source modes.",
-  "author": "https://ar-hakim.com",
+  "keywords": [
+    "text-editor",
+    "tiptap",
+    "wysiwyg",
+    "vue3",
+    "vue",
+    "rich-text",
+    "editor",
+    "component"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arhakim/simple-tiptap-texteditor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arhakim/simple-tiptap-texteditor/issues"
+  },
+  "homepage": "https://github.com/arhakim/simple-tiptap-texteditor#readme",
+  "author": {
+    "name": "AR Hakim",
+    "url": "https://ar-hakim.com"
+  },
   "license": "MIT",
   "main": "dist/simple-tiptap-texteditor.umd.js",
   "module": "dist/simple-tiptap-texteditor.es.js",
@@ -26,6 +47,9 @@
     "lint": "eslint . --ext .ts,.tsx,.js,.vue",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "peerDependencies": {
     "vue": "^3.3.0"
