@@ -1,0 +1,72 @@
+{
+  "name": "simple-tiptap-texteditor",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "A lightweight, preconfigured TipTap text editor Vue 3 component with sensible defaults and optional fullscreen/source modes.",
+  "author": "https://ar-hakim.com",
+  "license": "MIT",
+  "main": "dist/simple-tiptap-texteditor.umd.js",
+  "module": "dist/simple-tiptap-texteditor.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/simple-tiptap-texteditor.es.js",
+      "require": "./dist/simple-tiptap-texteditor.umd.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .ts,.tsx,.js,.vue",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "peerDependencies": {
+    "vue": "^3.3.0"
+  },
+  "dependencies": {
+    "@tiptap-extend/columns": "^2.1.6",
+    "@tiptap/core": "^3.9.1",
+    "@tiptap/extension-color": "^3.9.1",
+    "@tiptap/extension-file-handler": "^3.9.1",
+    "@tiptap/extension-image": "^3.9.1",
+    "@tiptap/extension-link": "^3.9.1",
+    "@tiptap/extension-placeholder": "^3.9.1",
+    "@tiptap/extension-subscript": "^3.9.1",
+    "@tiptap/extension-superscript": "^3.9.1",
+    "@tiptap/extension-table": "^3.9.1",
+    "@tiptap/extension-table-cell": "^3.9.1",
+    "@tiptap/extension-table-header": "^3.9.1",
+    "@tiptap/extension-table-row": "^3.9.1",
+    "@tiptap/extension-text-align": "^3.9.1",
+    "@tiptap/extension-text-style": "^3.9.1",
+    "@tiptap/extension-underline": "^3.9.1",
+    "@tiptap/extension-youtube": "^3.9.1",
+    "@tiptap/starter-kit": "^3.9.1",
+    "@tiptap/vue-3": "^3.9.1",
+    "change-case": "^5.4.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "@vitejs/plugin-vue": "^6.0.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-vue": "^9.30.0",
+    "prettier": "^3.4.1",
+    "sass": "^1.83.0",
+    "typescript": "^5.6.3",
+    "vite": "^6.0.2",
+    "vite-plugin-dts": "^4.2.3",
+    "vue": "^3.5.12",
+    "vue-eslint-parser": "^9.4.3"
+  }
+}
