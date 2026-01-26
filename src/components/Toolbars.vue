@@ -75,6 +75,18 @@ const buttonList = [
   { name: 'heading', title: 'Heading', dataType: 'dropdown', onClick: () => {} },
   { name: 'list', title: 'List', dataType: 'dropdown', onClick: () => {} },
   {
+    name: 'bulletList',
+    title: 'Bullet List',
+    dataType: 'button',
+    onClick: () => props.editor?.chain().focus().toggleBulletList().run(),
+  },
+  {
+    name: 'orderedList',
+    title: 'Ordered List',
+    dataType: 'button',
+    onClick: () => props.editor?.chain().focus().toggleOrderedList().run(),
+  },
+  {
     name: 'blockquote',
     title: 'Blockquote',
     dataType: 'button',
