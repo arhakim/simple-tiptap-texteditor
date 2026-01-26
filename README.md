@@ -9,10 +9,15 @@ Install directly from github
 npm install arhakim/simple-tiptap-texteditor
 ```
 
+To install a specific release version:
+```bash
+npm install arhakim/simple-tiptap-texteditor#v0.1.0
+```
+
 or add it manually to `package.json`
 ```json
 "dependencies": {
-  "simple-tiptap-texteditor": "github:arhakim/simple-tiptap-texteditor"
+  "simple-tiptap-texteditor": "github:arhakim/simple-tiptap-texteditor#v0.1.0"
   ...
 }
 ```
