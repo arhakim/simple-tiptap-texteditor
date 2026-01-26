@@ -48,6 +48,7 @@
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
+    "postinstall": "node -e \"const fs = require('fs'); if (!fs.existsSync('dist/index.d.ts')) process.exit(1)\" || pnpm run build",
     "prepublishOnly": "pnpm run build",
     "lint": "eslint . --ext .ts,.tsx,.js,.vue",
     "format": "prettier --write .",
