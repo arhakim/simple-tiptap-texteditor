@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
 import { useEditor, EditorContent, AnyExtension } from '@tiptap/vue-3';
+import { Dropcursor } from '@tiptap/extensions';
 import StarterKit from '@tiptap/starter-kit';
 import { TextStyleKit } from '@tiptap/extension-text-style';
 import Placeholder from '@tiptap/extension-placeholder';
@@ -10,8 +11,8 @@ import Youtube from '@tiptap/extension-youtube';
 import FileHandler from '@tiptap/extension-file-handler';
 import Subscript from '@tiptap/extension-subscript';
 import Superscript from '@tiptap/extension-superscript';
+import { TableKit } from '@tiptap/extension-table';
 import { Typography } from '../extensions/typographyExtensions';
-import { tableExtensions } from '../extensions/tableExtensions';
 import TableBubble from './TableBubble.vue';
 import ImageBubble from './ImageBubble.vue';
 import VideoBubble from './videoBubble.vue';
@@ -85,9 +86,22 @@ const emit = defineEmits<{
 const editor = useEditor({
   content: props.modelValue || '<p></p>',
   extensions: [
-    StarterKit,
+    Dropcursor.configure({
+      color: '#68cef8',
+    }),
+    StarterKit.configure({
+      link: {
+        openOnClick: false,
+        enableClickSelection: true,
+      },
+    }),
     TextStyleKit,
-    ...tableExtensions(),
+    TableKit.configure({
+      table: {
+        resizable: true,
+        HTMLAttributes: { class: 'stte-table', border: 1 },
+      },
+    }),
     TextAlign.configure({
       types: ['heading', 'paragraph'],
     }),
@@ -100,11 +114,11 @@ const editor = useEditor({
     Youtube.configure({ controls: false, nocookie: true }),
     FileHandler.configure({
       allowedMimeTypes: ['image/png', 'image/jpeg', 'image/gif', 'image/webp'],
-      onDrop: async (_currentEditor, files) => {
+      /* onDrop: async (_currentEditor, files) => {
         for (const file of files) {
           await handleImageUpload(file);
         }
-      },
+      }, */
       onPaste: async (_currentEditor, files, htmlContent) => {
         if (htmlContent) return false;
         for (const file of files) {
@@ -119,6 +133,13 @@ const editor = useEditor({
       } as Record<string, string>,
       allowBase64: false,
       inline: false,
+      resize: {
+        enabled: true,
+        directions: ['top', 'bottom', 'left', 'right'], // can be any direction or diagonal combination
+        minWidth: 50,
+        minHeight: 50,
+        alwaysPreserveAspectRatio: true,
+      }
     }),
   ],
   onUpdate: ({ editor }) => {
