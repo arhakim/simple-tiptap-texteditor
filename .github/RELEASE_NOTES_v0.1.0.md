@@ -38,6 +38,7 @@ pnpm add arhakim/simple-tiptap-texteditor#v0.1.0
 
 ```vue
 <script setup lang="ts">
+import { ref } from 'vue';
 import { TextEditor } from 'simple-tiptap-texteditor';
 import 'simple-tiptap-texteditor/styles';
 
