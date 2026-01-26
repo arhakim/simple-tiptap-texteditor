@@ -25,8 +25,8 @@ The demo will automatically open in your browser at `http://localhost:5173/demo/
 The demo shows:
 
 1. **Basic Editor** - Simple rich text editor with all features enabled
-3. **Feature Grid** - Visual showcase of all built-in features
-4. **Live HTML Output** - Real-time HTML preview of editor content
+2. **Feature Grid** - Visual showcase of all built-in features
+3. **Live HTML Output** - Real-time HTML preview of editor content
 
 ## Features Demonstrated
 

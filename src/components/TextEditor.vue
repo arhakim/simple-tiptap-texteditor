@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
-import { useEditor, EditorContent } from '@tiptap/vue-3';
+import { useEditor, EditorContent, AnyExtension } from '@tiptap/vue-3';
 import StarterKit from '@tiptap/starter-kit';
 import { TextStyleKit } from '@tiptap/extension-text-style';
 import Placeholder from '@tiptap/extension-placeholder';
@@ -75,20 +75,14 @@ const props = withDefaults(defineProps<Props>(), {
     'code',
     'fullscreen',
   ],
+  uploadImage: undefined,
+  onError: undefined,
 });
 
 const emit = defineEmits<{
   'update:modelValue': [value: string];
   error: [message: string];
 }>();
-
-const normalizeButtons = (buttons: string[] | string[][] | undefined): string[][] => {
-  if (!buttons) return [];
-  if (Array.isArray(buttons[0])) {
-    return buttons as string[][];
-  }
-  return [buttons as string[]];
-};
 
 const editor = useEditor({
   content: props.modelValue || '<p></p>',
@@ -124,11 +118,11 @@ const editor = useEditor({
     Image.configure({
       HTMLAttributes: {
         style: 'max-width: 100%; height: auto; cursor: pointer;',
-      },
+      } as Record<string, string>,
       allowBase64: false,
       inline: false,
     }),
-    ColumnsExtension,
+    ColumnsExtension as AnyExtension,
   ],
   onUpdate: ({ editor }) => {
     const html = editor.getHTML();
@@ -178,10 +172,10 @@ const editorRoot = ref<HTMLElement | null>(null);
 const isFullscreen = ref(false);
 const previousBodyOverflow = ref<string | null>(null);
 
+const showSource = ref(false);
+
 let fullscreenChangeHandler: (() => void) | null = null;
 let keydownHandler: ((e: KeyboardEvent) => void) | null = null;
-
-const showSource = ref(false);
 
 watch(
   () => props.modelValue,
@@ -214,9 +208,17 @@ watch(editor, (newEditor) => {
   }
 });
 
+function normalizeButtons(buttons: string[] | string[][] | undefined): string[][] {
+  if (!buttons) return [];
+  if (Array.isArray(buttons[0])) {
+    return buttons as string[][];
+  }
+  return [buttons as string[]];
+}
+
 async function toggleFullscreen() {
   if (!isFullscreen.value) {
-    const el: any = editorRoot.value || document.documentElement;
+    const el: HTMLElement | Document = editorRoot.value || document.documentElement;
     try {
       if (el && el.requestFullscreen) {
         await el.requestFullscreen();
@@ -283,8 +285,9 @@ async function handleImageUpload(file: File) {
       })
       .focus()
       .run();
-  } catch (error: any) {
-    notifyError(error?.message || 'Failed to upload image.');
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Failed to upload image.';
+    notifyError(errorMessage || 'Failed to upload image.');
   }
 }
 

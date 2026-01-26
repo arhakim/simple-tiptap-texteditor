@@ -1,4 +1,4 @@
-import { Extension } from '@tiptap/core';
+import { Extension, CommandProps } from '@tiptap/core';
 import { snakeCase, capitalCase, kebabCase, camelCase, sentenceCase } from 'change-case';
 
 export const Typography = Extension.create({
@@ -8,7 +8,7 @@ export const Typography = Extension.create({
     return {
       toUppercase:
         () =>
-        ({ editor, state, dispatch }: any) => {
+        ({ editor, state, dispatch }: CommandProps) => {
           const { from, to } = state.selection;
           if (from === to) return false;
 
@@ -24,7 +24,7 @@ export const Typography = Extension.create({
 
       toLowercase:
         () =>
-        ({ editor, state, dispatch }: any) => {
+        ({ editor, state, dispatch }: CommandProps) => {
           const { from, to } = state.selection;
           if (from === to) return false;
 
@@ -40,7 +40,7 @@ export const Typography = Extension.create({
 
       toSnakeCase:
         () =>
-        ({ editor, state, dispatch }: any) => {
+        ({ editor, state, dispatch }: CommandProps) => {
           const { from, to } = state.selection;
           if (from === to) return false;
 
@@ -56,7 +56,7 @@ export const Typography = Extension.create({
 
       toKebabCase:
         () =>
-        ({ editor, state, dispatch }: any) => {
+        ({ editor, state, dispatch }: CommandProps) => {
           const { from, to } = state.selection;
           if (from === to) return false;
 
@@ -72,7 +72,7 @@ export const Typography = Extension.create({
 
       toCamelCase:
         () =>
-        ({ editor, state, dispatch }: any) => {
+        ({ editor, state, dispatch }: CommandProps) => {
           const { from, to } = state.selection;
           if (from === to) return false;
 
@@ -88,7 +88,7 @@ export const Typography = Extension.create({
 
       toTitleCase:
         () =>
-        ({ editor, state, dispatch }: any) => {
+        ({ editor, state, dispatch }: CommandProps) => {
           const { from, to } = state.selection;
           if (from === to) return false;
 
@@ -104,7 +104,7 @@ export const Typography = Extension.create({
 
       toSentenceCase:
         () =>
-        ({ editor, state, dispatch }: any) => {
+        ({ editor, state, dispatch }: CommandProps) => {
           const { from, to } = state.selection;
           if (from === to) return false;
 
