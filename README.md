@@ -4,10 +4,17 @@ A lightweight, preconfigured TipTap text editor Vue 3 component with optional fu
 
 ## Installation
 
+Install directly from github
 ```bash
-pnpm add simple-tiptap-texteditor
-# or
-npm install simple-tiptap-texteditor
+npm install arhakim/simple-tiptap-texteditor
+```
+
+or add it manually to `package.json`
+```json
+"dependencies": {
+  "simple-tiptap-texteditor": "github:arhakim/simple-tiptap-texteditor"
+  ...
+}
 ```
 
 ## Quick start
@@ -15,7 +22,7 @@ npm install simple-tiptap-texteditor
 ```vue
 <script setup lang="ts">
 import { TextEditor } from 'simple-tiptap-texteditor';
-import 'simple-tiptap-texteditor/dist/style.css';
+import 'simple-tiptap-texteditor/styles';
 
 const content = ref('');
 
@@ -36,10 +43,10 @@ const toolbarButtons = ['bold', 'italic', 'underline', 'separator', 'bulletList'
 </script>
 
 <template>
-  <TextEditor 
-    v-model="content" 
-    label="Body" 
-    :required="true" 
+  <TextEditor
+    v-model="content"
+    label="Body"
+    :required="true"
     :upload-image="uploadImage"
     :buttons="toolbarButtons"
   />
@@ -107,6 +114,23 @@ pnpm build
 ```
 
 This library is built with Vite in library mode and emits ESM, UMD, and type declarations in `dist/`.
+
+## Troubleshooting
+
+### Why do I need to import from `/src`?
+
+If you're importing like this:
+```typescript
+import { TextEditor } from 'simple-tiptap-texteditor/src'
+```
+
+It means the package wasn't built before publishing. The correct import should be:
+```typescript
+import { TextEditor } from 'simple-tiptap-texteditor'
+import 'simple-tiptap-texteditor/styles'
+```
+
+**For package maintainers:** Always run `pnpm run build` before publishing. The `prepublishOnly` script will do this automatically.
 
 ## Acknowledgments
 
