@@ -158,26 +158,6 @@
   }
 }
 
-:deep(.ProseMirror .column-block) {
-  width: 100%;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
-  gap: 24px;
-  padding: 8px 0;
-}
-
-:deep(.ProseMirror .column) {
-  overflow: hidden;
-  padding: 8px;
-  margin: -8px;
-}
-
-:deep(.ProseMirror-focused .column) {
-  border: 1px gray dashed;
-  border-radius: 8px;
-}
-
 .stte-wrapper {
   display: flex;
   flex-direction: column;

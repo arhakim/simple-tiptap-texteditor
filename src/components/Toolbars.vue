@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import ColumnMenu from './ColumnMenu.vue';
 import TableMenu from './TableMenu.vue';
 
 const props = defineProps<{
@@ -163,7 +162,6 @@ const buttonList = [
     dataType: 'button',
     onClick: () => props.editor?.chain().focus().setHorizontalRule().run(),
   },
-  { name: 'column', title: 'Column', dataType: 'column', onClick: () => {} },
 ];
 
 const typographyItems = [
@@ -307,11 +305,6 @@ function insertTable(rows?: number, cols?: number, header?: boolean) {
   openMenu.value = null;
 }
 
-function insertColumns(cols: number) {
-  props.editor?.chain().focus().setColumns(cols).run();
-  openMenu.value = null;
-}
-
 function isButtonExist(name: string) {
   return buttonList.find((btn) => btn.name === name);
 }
@@ -396,25 +389,6 @@ function toggleMenu(menuKey: string) {
               >
                 {{ item.label }}
               </button>
-            </div>
-          </div>
-
-          <div
-            v-if="isButtonExist(button) && getButton(button)?.dataType === 'column'"
-            class="stte-dropdown"
-          >
-            <button
-              type="button"
-              class="stte-btn"
-              @click="toggleMenu(`${button}-${rowIndex}-${buttonIndex}`)"
-            >
-              {{ getButton(button)?.title }}
-            </button>
-            <div
-              v-if="openMenu === `${button}-${rowIndex}-${buttonIndex}`"
-              class="stte-dropdown-menu"
-            >
-              <ColumnMenu @select="(value: number) => insertColumns(value)" />
             </div>
           </div>
 

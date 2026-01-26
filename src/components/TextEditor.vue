@@ -10,10 +10,8 @@ import Youtube from '@tiptap/extension-youtube';
 import FileHandler from '@tiptap/extension-file-handler';
 import Subscript from '@tiptap/extension-subscript';
 import Superscript from '@tiptap/extension-superscript';
-import { ColumnsExtension } from '@tiptap-extend/columns';
 import { Typography } from '../extensions/typographyExtensions';
 import { tableExtensions } from '../extensions/tableExtensions';
-import ColumnBubble from './ColumnBubble.vue';
 import TableBubble from './TableBubble.vue';
 import ImageBubble from './ImageBubble.vue';
 import VideoBubble from './videoBubble.vue';
@@ -122,7 +120,6 @@ const editor = useEditor({
       allowBase64: false,
       inline: false,
     }),
-    ColumnsExtension as AnyExtension,
   ],
   onUpdate: ({ editor }) => {
     const html = editor.getHTML();
@@ -133,8 +130,6 @@ const editor = useEditor({
     const isVideoSelected = editor.isActive('youtube');
     const isTable = editor.isActive('table') || editor.isActive('tableCell');
     showTableBubble.value = isTable && !isImageSelected && !isVideoSelected;
-    const isColumn = editor.isActive('column');
-    showColumnBubble.value = isColumn && !isTable && !isImageSelected && !isVideoSelected;
 
     imageMenuVisible.value = isImageSelected;
     videoMenuVisible.value = isVideoSelected;
@@ -163,7 +158,6 @@ const editor = useEditor({
 const imageMenuVisible = ref(false);
 const imageMenuPosition = ref({ x: 0, y: 0 });
 const showTableBubble = ref(false);
-const showColumnBubble = ref(false);
 
 const videoMenuVisible = ref(false);
 const videoMenuPosition = ref({ x: 0, y: 0 });
@@ -357,7 +351,6 @@ onUnmounted(() => {
       style="scrollbar-width: 2px"
     >
       <TableBubble v-if="showTableBubble" :editor="editor" @close="showTableBubble = false" />
-      <ColumnBubble v-if="showColumnBubble" :editor="editor" @close="showColumnBubble = false" />
       <ImageBubble
         :editor="editor"
         :visible="imageMenuVisible"
