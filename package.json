@@ -40,12 +40,15 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/simple-tiptap-texteditor.es.js",
       "require": "./dist/simple-tiptap-texteditor.umd.js"
-    }
+    },
+    "./styles": "./dist/simple-tiptap-texteditor.css",
+    "./dist/style.css": "./dist/simple-tiptap-texteditor.css"
   },
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
+    "prepublishOnly": "pnpm run build",
     "lint": "eslint . --ext .ts,.tsx,.js,.vue",
     "format": "prettier --write .",
     "format:check": "prettier --check ."

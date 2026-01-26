@@ -4,7 +4,15 @@ import dts from 'vite-plugin-dts';
 import path from 'path';
 
 export default defineConfig({
-  plugins: [vue(), dts({ insertTypesEntry: true })],
+  plugins: [
+    vue(),
+    dts({
+      insertTypesEntry: true,
+      outDir: 'dist',
+      staticImport: true,
+      rollupTypes: true,
+    }),
+  ],
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
